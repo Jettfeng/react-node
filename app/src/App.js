@@ -17,12 +17,19 @@ class One extends Component {
     super (props);
     this.state = {
       solders: ['虎子', '柱子', '五根生'],
-    };
+    }
+    this.addSolder = this.addSolder.bind(this)
+  }
+  addSolder(){
+      this.setState({
+        solders:[...this.state.solders,'新添加的'+Math.random()]
+      })
   }
   render () {
     return (
       <div>
         <h2>营长：{this.props.boss}</h2>
+        <button onClick={this.addSolder.bind(this)}>添加</button>
         <ul>
           {this.state.solders.map(v=><li key={v}>{v}</li>)}
         </ul>
