@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div>
         <h2>团长:{boss}</h2>
-        <One />
+        <One boss='张大喵' />
       </div>
     );
   }
@@ -14,8 +14,7 @@ class App extends Component {
 
 class One extends Component {
   render () {
-    const boss = '大瞄';
-    return <h2>营长：{boss}</h2>;
+    return <h2>营长：{this.props.boss}</h2>;
   }
 }
 
