@@ -1,7 +1,4 @@
-<h3>2.3项目配置</h3>
-<p>npm install express --save</p>
-<p>安装nodemon(自动更新)：npm install -g nodemon</p>
-<p>执行nodemon server.js启动</p>
+<h3>3-1 React基础知识回顾1-入门例子</h3>
 <p></p>
 
 
