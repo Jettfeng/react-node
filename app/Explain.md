@@ -1,4 +1,4 @@
-<h3>4-4 Redux状态管理4-更进一步，让 Redux 可以处理异步</h3>
+<h3>4-5 Redux状态管理5-Chrome 中 Redux 调式工具</h3>
 <p>Redux处理异步，需要redux-thunk插件</p>
 <p>.npm install redux-thunk --save</p>
 <p>.使用applyMiddleware开启中间件</p>
