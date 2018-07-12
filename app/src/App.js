@@ -9,10 +9,12 @@ export default class App extends Component {
     const num = store.getState ();
     const addNum = this.props.addNum
     const reduceNum = this.props.reduceNum
+    const addNumAsync = this.props.addNumAsync
     return (
       <div>
         <div>num:{num}</div>
         <div onClick={()=>store.dispatch(addNum())}>+</div>
+        <div onClick={()=>store.dispatch(addNumAsync())}>异步(延迟2s)+</div>
         <div onClick={()=>store.dispatch(reduceNum())}>-</div>
       </div>
     );

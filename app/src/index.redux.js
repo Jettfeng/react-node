@@ -18,3 +18,11 @@ export function addNum () {
 export function reduceNum () {
   return {type: REDUCE_NUM};
 }
+// 处理异步，返回函数
+export function addNumAsync () {
+  return dispatch => {
+    setTimeout (() => {
+      dispatch (addNum ());
+    }, 2000);
+  };
+}
