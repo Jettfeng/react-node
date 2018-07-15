@@ -26,3 +26,4 @@ export function addNumAsync () {
     }, 2000);
   };
 }
+

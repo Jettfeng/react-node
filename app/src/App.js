@@ -1,22 +1,28 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 // import {addNum} from './index.redux'
 export default class App extends Component {
   //   constructor (props) {
   //     super (props);
   //   }
+  componentWillMount () {
+    console.log (this);
+  }
   render () {
     const store = this.props.store;
     const num = store.getState ();
-    const addNum = this.props.addNum
-    const reduceNum = this.props.reduceNum
-    const addNumAsync = this.props.addNumAsync
+    const addNum = this.props.addNum;
+    const reduceNum = this.props.reduceNum;
+    const addNumAsync = this.props.addNumAsync;
     return (
-      <div>
-        <div>num:{num}</div>
-        <div onClick={()=>store.dispatch(addNum())}>+</div>
-        <div onClick={()=>store.dispatch(addNumAsync())}>异步(延迟2s)+</div>
-        <div onClick={()=>store.dispatch(reduceNum())}>-</div>
-      </div>
+      <Router>
+        <div>
+          <div>num:{num}</div>
+          <div onClick={() => store.dispatch (addNum ())}>+</div>
+          <div onClick={() => store.dispatch (addNumAsync ())}>异步(延迟2s)+</div>
+          <div onClick={() => store.dispatch (reduceNum ())}>-</div>
+        </div>
+      </Router>
     );
   }
 }
