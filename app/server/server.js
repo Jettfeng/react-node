@@ -44,12 +44,12 @@ app.get('/',function(req,res){
     res.send('<h1>Hello world</h1>')
 })
 app.get('/data',function(req,res){
-    // User.find({},function(err,doc){//查找列表
-    //     return res.json(doc)
-    // })
-    User.findOne({user:'xiaoming'},function(err,doc){//只查找一跳数据，返回json
+    User.find({},function(err,doc){//查找列表
         return res.json(doc)
     })
+   // User.findOne({user:'xiaoming'},function(err,doc){//只查找一跳数据，返回json
+       // return res.json(doc)
+    //})
 //   res.json({name:'imooc',type:'React'})
 })
 app.listen(9093,function(){

@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 // import {addNum} from './index.redux'
 export default class App extends Component {
-  //   constructor (props) {
-  //     super (props);
-  //   }
+    constructor (props) {
+      super (props);
+      this.state = {}
+    }
   componentWillMount () {
-    console.log (this);
+    axios.get('/data').then((res)=>{
+      console.log(res);
+    })
   }
   render () {
     const store = this.props.store;
