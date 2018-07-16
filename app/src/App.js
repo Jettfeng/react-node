@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-// import {addNum} from './index.redux'
+import {addNum} from './index.redux'
 export default class App extends Component {
     constructor (props) {
       super (props);
