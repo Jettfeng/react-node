@@ -1,4 +1,32 @@
-const mongoose = require('mongoose')
+const mongoose = require ('mongoose');
 // 链接数据库,并且使用imooc这个集合
-const DB_URL = 'mongodb://localhost:27017/imooc'
-mongoose.connect(DB_URL,{ useMongoClient: true })//如果不配置{ useMongoClient: true }会有警告
+const DB_URL = 'mongodb://localhost:27017/imooc-chat';
+mongoose.connect (DB_URL, {useMongoClient: true}); //如果不配置{ useMongoClient: true }会有警告
+
+const models = {
+  user: {
+    'user': {type: String, require: true},
+    'pwd': {type: String, require: true},
+    'type': {type: String, require: true},
+    // 头像
+    'avatar': {type: String},
+    // 个人简介或者职位简介
+    'desc':{type: String},
+    // 职位名
+    'title':{type:String},
+    // 如果是boss
+    'company':{type:String},
+    'money':{type:String}
+  },
+  chat: {},
+}
+
+for(let m in models){
+    mongoose.model(m,new mongoose.Schema(models[m]))
+}
+
+module.exports = {
+    getModel:function(name){
+        return mongoose.model(name)
+    }
+}
