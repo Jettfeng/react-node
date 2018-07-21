@@ -1,7 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom'; //如果不使用withRouter，this.props.history 为undefined
-@withRouter class AuthRoute extends React.Component {
+import {loadData} from '../../redux/user.redux'
+import {connect} from 'react-redux'
+
+@withRouter 
+@connect(
+  null,
+  {loadData}
+)
+class AuthRoute extends React.Component {
   componentDidMount () {
     const publicList = ['/login', '/register'];
     const pathname = this.props.location.pathname; //判断当前路径
@@ -14,6 +22,7 @@ import {withRouter} from 'react-router-dom'; //如果不使用withRouter，this.
         console.log (res.data);
         if (res.data.code == 0) {
           // 有登录信息的
+          this.props.loadData(res.data.data)
         } else {
           // 没有登录信息的
           console.log (this.props.history);
