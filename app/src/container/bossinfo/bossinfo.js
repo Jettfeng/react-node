@@ -19,7 +19,8 @@ class BossInfo extends React.Component{
 			company:'',
 			money:''
 		}
-	}
+  }
+  
 	onChange(key,val){
 		this.setState({
 			[key]:val
@@ -32,7 +33,7 @@ class BossInfo extends React.Component{
 			<div>
 				{redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect> :null}
 				<NavBar mode="dark" >BOSS完善信息页</NavBar>
-				<AvatarSelector 
+        <AvatarSelector 
 					selectAvatar={(imgname)=>{
 						this.setState({
 							avatar:imgname

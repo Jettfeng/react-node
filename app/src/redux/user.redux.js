@@ -28,6 +28,7 @@ export function user(state=initState, action){
 	}
 }
 function authSuccess (data) {
+  // console.log(data)
   return {type: AUTH_SUCCESS, payload: data};
 }
 
@@ -39,9 +40,11 @@ export function loadData (userinfo) {
   return {type: LOAD_DATA, payload: userinfo};
 }
 export function update (data) {
+  console.log(data)
   return dispatch => {
     axios.post ('/user/update', data).then (res => {
       if (res.status == 200 && res.data.code === 0) {
+        console.log(res)
         dispatch (authSuccess (res.data.data));
       } else {
         dispatch (errorMsg (res.data.msg));

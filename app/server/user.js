@@ -15,7 +15,7 @@ Router.post('/update',function(req,res){
   if(!userid){
     return json.dumps({code:1})
   }
-  const {body} = req.body
+  const body = req.body
   User.findByIdAndUpdate(userid,body,function(err,doc){
     const data = Object.assign({},
     {
