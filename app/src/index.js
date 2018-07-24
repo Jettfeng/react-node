@@ -12,6 +12,7 @@ import './index.css'
 import Login from './container/login/login';
 import Register from './container/register/register';
 import AuthRoute from './component/authroute/authroute';
+import BossInfo from './container/bossinfo/bossinfo'
 
 // 配置redux-devtools
 const reduxDevtools = window.devToolsExtension
@@ -23,18 +24,16 @@ const store = createStore (
   compose (applyMiddleware (thunk), reduxDevtools)
 ); //开启中间件
 
-function Boss(){
-    return <h2>这里是Boss页面</h2>
-}
-
 ReactDOM.render (
   <Provider store={store}>
     <BrowserRouter>
       <div>
         <AuthRoute />
-        <Route path="/boss" component={Boss} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Switch>
+          <Route path="/bossinfo" component={BossInfo} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
       </div>
     </BrowserRouter>
   </Provider>,
