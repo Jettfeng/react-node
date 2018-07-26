@@ -1,8 +1,6 @@
 import axios from 'axios';
 import {getRedirectPath} from '../util';
-const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const LOAD_DATA = 'LOAD_DATA';
 const initState = {
@@ -43,7 +41,7 @@ export function loadData (userinfo) {
 export function update (data) {
   return dispatch => {
     axios.post ('/user/update', data).then (res => {
-      if (res.status == 200 && res.data.code === 0) {
+      if (res.status === 200 && res.data.code === 0) {
         console.log(res)
         dispatch (authSuccess (res.data.data));
       } else {
