@@ -13,6 +13,8 @@ import Login from './container/login/login';
 import Register from './container/register/register';
 import AuthRoute from './component/authroute/authroute';
 import BossInfo from './container/bossinfo/bossinfo'
+import GeniusInfo from './container/geniusinfo/geniusinfo'
+
 
 // 配置redux-devtools
 const reduxDevtools = window.devToolsExtension
@@ -31,6 +33,7 @@ ReactDOM.render (
         <AuthRoute />
         <Switch>
           <Route path="/bossinfo" component={BossInfo} />
+          <Route path="/geniusinfo" component={GeniusInfo} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
         </Switch>

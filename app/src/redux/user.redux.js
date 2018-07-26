@@ -16,7 +16,7 @@ const initState = {
 export function user(state=initState, action){
 	switch(action.type){
 		case AUTH_SUCCESS:
-			return {...state, msg:'',redirectTo:getRedirectPath(action.payload),...action.payload}
+			return {...state, msg:'',redirectTo:getRedirectPath(action.payload),...action.payload,pwd:''}
 		case LOAD_DATA:
 			return {...state, ...action.payload}
 		case ERROR_MSG:
@@ -27,8 +27,9 @@ export function user(state=initState, action){
 			return state
 	}
 }
-function authSuccess (data) {
+function authSuccess (obj) {
   // console.log(data)
+  const {pwd,...data} = obj 
   return {type: AUTH_SUCCESS, payload: data};
 }
 
@@ -40,7 +41,6 @@ export function loadData (userinfo) {
   return {type: LOAD_DATA, payload: userinfo};
 }
 export function update (data) {
-  console.log(data)
   return dispatch => {
     axios.post ('/user/update', data).then (res => {
       if (res.status == 200 && res.data.code === 0) {
