@@ -20,7 +20,7 @@ function userList (data) {
 
 export function getUserList (type) {
   return dispatch => {
-    axios.get ('/user/list?type=genius').then (res => {
+    axios.get ('/user/list?type='+type).then (res => {
       console.log (res);
       if (res.data.code === 0) {
         dispatch (userList (res.data.data));
