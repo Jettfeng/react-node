@@ -9,6 +9,7 @@ class NavLinkBar extends React.Component {
   };
   constructor (props) {
     super (props);
+    this.state = {}
   }
   render () {
     const navList = this.props.data.filter (v => !v.hide);
