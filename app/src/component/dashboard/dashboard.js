@@ -5,16 +5,16 @@ import {Switch, Route} from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
-// import User from '../../component/user/user'
+import User from '../../component/user/user'
 // import Msg from '../msg/msg'
 // import {getMsgList,recvMsg} from '../../redux/chat.redux'
 
 function Msg(){
   return <div>msg</div>
 }
-function User(){
-  return <div>user</div>
-}
+// function User(){
+//   return <div>user</div>
+// }
 @connect(
 	state=>state,
 )
