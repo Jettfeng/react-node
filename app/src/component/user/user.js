@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {Result,List,WhiteSpace,Modal} from 'antd-mobile';
 import browserCookie from 'browser-cookies'
 import { relative } from 'path';
-
+import {logoutSubmit} from '../../redux/user.redux'
+import {Redirect} from 'react-router-dom'
 @connect(
-	state=>state.user,
+    state=>state.user,
+    {logoutSubmit}
 )
 class User extends React.Component {
     constructor(props){
@@ -22,11 +24,10 @@ class User extends React.Component {
             { text: '取消', onPress: () => console.log('cancel') },
             { text: '确定', onPress: () => {
                 browserCookie.erase('userid')
-                window.location.href = window.location.href
+                // window.location.href = window.location.href
+                this.props.logoutSubmit()
             }},
           ])
-        // browserCookie.erase('userid')
-        
     }
   render () {
       const props = this.props
@@ -51,7 +52,7 @@ class User extends React.Component {
         <Item style={{position:relative,zIndex:1}} onClick={this.logout}>退出登录</Item>
         </List>
       </div>
-    ):null;
+    ):<Redirect to={props.redirectTo}/>;
   }
 }
 
