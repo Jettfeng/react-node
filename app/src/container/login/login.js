@@ -5,19 +5,49 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {login} from '../../redux/user.redux'
 
-function hello(){
-  console.log('hello imooc')
-}
+// function hello(){
+//   console.log('hello imooc')
+// }
 
-function WrapHello(fn){
-  return function(){
-    console.log('before say hello');
-    fn()
-    console.log('after say hello');
+// function WrapHello(fn){
+//   return function(){
+//     console.log('before say hello');
+//     fn()
+//     console.log('after say hello');
+//   }
+// }
+// hello = WrapHello(hello)
+// hello()
+
+// class Hello extends React.Component{
+//   render(){
+//     return <div>I love React</div>
+//   }
+// }
+// 属性代理
+function WrapHello(Comp){
+  class WrapComp extends React.Component{
+    render(){
+      return(
+      <div>
+        <p>这是HOC高阶组件特有的元素</p>
+        <Comp {...this.props}></Comp>
+      </div>)
+    }
+  }
+  return WrapComp
+}
+Hello = WrapHello(Hello)//方法一：直接传入参数
+
+// 方法二:@+方法+需要包裹的组件
+@WrapHello
+class Hello extends React.Component{
+  render(){
+    return <div>I love React</div>
   }
 }
-hello = WrapHello(hello)
-hello()
+
+
 
 @connect(
   state=>state.user,
@@ -48,6 +78,7 @@ class Login extends React.Component {
   render () {
     return (
       <div>
+        <Hello />
         {this.props.redirectTo&&this.props.redirectTo!=='/login'?<Redirect to={this.props.redirectTo}/>:null}
         <Logo />
         <h2>我是登陆页面</h2>
