@@ -9,9 +9,11 @@ const io = require ('socket.io') (server);
 // 建立连接
 io.on ('connection', function (socket) {
   console.log ('user login');
-  console.log ('a user connected');
+  socket.on ('sendmsg', function (data) {
+    console.log (data);
+    io.emit('recvmsg',data)
+  });
 });
-
 const userRouter = require ('./user');
 
 app.use (cookieParser ());
