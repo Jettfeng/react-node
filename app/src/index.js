@@ -15,7 +15,7 @@ import AuthRoute from './component/authroute/authroute';
 import BossInfo from './container/bossinfo/bossinfo';
 import GeniusInfo from './container/geniusinfo/geniusinfo';
 import Dashboard from './component/dashboard/dashboard'
-
+import Chat from './component/chat/chat'
 // 配置redux-devtools
 const reduxDevtools = window.devToolsExtension
   ? window.devToolsExtension ()
@@ -37,6 +37,7 @@ ReactDOM.render (
           <Route path="/geniusinfo" component={GeniusInfo} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/chat/:user" component={Chat} />
           {/* 如果没有path ，只要上面的路由没有命中，就会显示 */}
           <Route component={Dashboard} />
         </Switch>

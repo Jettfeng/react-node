@@ -1,17 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card,WhiteSpace,WingBlank} from 'antd-mobile'
-class UserCard extends React.Component {
-    componentDidMount(){
-        console.log(this.props.userlist);
-        
-    }
+import {Card, WhiteSpace, WingBlank} from 'antd-mobile';
+import {withRouter} from 'react-router-dom';
+
+@withRouter class UserCard extends React.Component {
+  constructor (props) {
+    super (props);
+    this.state = {};
+    // this.handleClick = this.handleClick.bind(this);
+  }
+  componentDidMount () {
+    console.log (this.props.userlist);
+  }
   static propTypes = {
     userlist: PropTypes.array.isRequired,
   };
+  handleClick (v) {
+    this.props.history.push (`/chat/${v.user}`);
+  }
   render () {
-    const Header = Card.Header
-    const Body = Card.Body
+    const Header = Card.Header;
+    const Body = Card.Body;
     return (
       <div>
         <WhiteSpace />
@@ -19,16 +28,16 @@ class UserCard extends React.Component {
           {this.props.userlist.map (
             v =>
               v.avatar
-                ? <Card key={v._id}>
+                ? <Card key={v._id} onClick={() => this.handleClick (v)}>
                     <Header
                       title={v.user}
                       thumb={require (`../img/${v.avatar}.png`)}
                       extra={<span>{v.title}</span>}
                     />
                     <Body>
-                    {v.type=='boss'? <div>公司:{v.company}</div> :null}
+                      {v.type == 'boss' ? <div>公司:{v.company}</div> : null}
                       {v.desc}
-                      {v.type=='boss'? <div>薪资:{v.money}</div> :null}
+                      {v.type == 'boss' ? <div>薪资:{v.money}</div> : null}
                     </Body>
                   </Card>
                 : null
