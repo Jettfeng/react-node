@@ -24,20 +24,30 @@ import {login} from '../../redux/user.redux'
 //     return <div>I love React</div>
 //   }
 // }
-// 属性代理
+
 function WrapHello(Comp){
-  class WrapComp extends React.Component{
-    render(){
-      return(
-      <div>
-        <p>这是HOC高阶组件特有的元素</p>
-        <Comp {...this.props}></Comp>
-      </div>)
-    }
+  // 反向继承，让WrapHello继承Comp组件，修改组件生命周期
+  class WrapComp extends Comp{
+     componentDidMount(){
+       console.log('高阶组件新增的生命终结期，加载完成');
+     }
+      render(){
+        return <Comp></Comp>
+      }
   }
+  // 属性代理
+  // class WrapComp extends React.Component{
+  //   render(){
+  //     return(
+  //     <div>
+  //       <p>这是HOC高阶组件特有的元素</p>
+  //       <Comp {...this.props}></Comp>
+  //     </div>)
+  //   }
+  // }
   return WrapComp
 }
-Hello = WrapHello(Hello)//方法一：直接传入参数
+//Hello = WrapHello(Hello)//方法一：直接传入参数
 
 // 方法二:@+方法+需要包裹的组件
 @WrapHello
