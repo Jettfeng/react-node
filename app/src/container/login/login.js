@@ -4,6 +4,21 @@ import {List, InputItem, WingBlank, WhiteSpace, Button} from 'antd-mobile';
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {login} from '../../redux/user.redux'
+
+function hello(){
+  console.log('hello imooc')
+}
+
+function WrapHello(fn){
+  return function(){
+    console.log('before say hello');
+    fn()
+    console.log('after say hello');
+  }
+}
+hello = WrapHello(hello)
+hello()
+
 @connect(
   state=>state.user,
   {login}
@@ -26,7 +41,7 @@ class Login extends React.Component {
     this.setState({
       [key]:val
     })
-  }
+  } 
   handleLogin(){
     this.props.login(this.state)
   }
