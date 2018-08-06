@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 const socket = io ('ws://localhost:9093');
 
 // 获取聊天列表
-const MST_LIST = 'MSG_LIST';
+const MSG_LIST = 'MSG_LIST';
 // 读信息
 const MSG_RECV = 'MSG_RECV';
 // 标识已读
@@ -17,21 +17,40 @@ const initState = {
 
 export function chat (state = initState, action) {
   switch (action.type) {
-    case MST_LIST:
+    case MSG_LIST:
       return {
         ...state,
         chatmsg: action.payload,
-        unread: action.payload.filter (v => !v.read).length
+        unread: action.payload.filter (v => !v.read).length,
       };
     case MSG_RECV:
-      
+      return {
+        ...state,
+        chatmsg: [...state.chatmsg, action.payload],
+      };
     case MSG_READ:
     default:
       return state;
   }
 }
 function msgList (msgs) {
-  return {type: 'MSG_LIST', payload: msgs};
+  return {type: MSG_LIST, payload: msgs};
+}
+function msgRecv (msg) {
+  return {type: MSG_RECV, payload: msg};
+}
+export function recvMsg () {
+  return dispatch => {
+    socket.on ('recvmsg', function (data) {
+      console.log ('recvmig');
+      dispatch (msgRecv (data));
+    });
+  };
+}
+export function sendMsg (from, to, msg) {
+  return dispatch => {
+    socket.emit ('sendmsg', {from, to, msg});
+  };
 }
 export function getMsgList () {
   return dispatch => {
