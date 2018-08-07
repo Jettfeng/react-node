@@ -16,6 +16,7 @@ class NavLinkBar extends React.Component {
     super (props);
     this.state = {}
   }
+  
   render () {
     const navList = this.props.data.filter (v => !v.hide);
     const {pathname} = this.props.location
