@@ -36,9 +36,9 @@ class User extends React.Component {
     return props.user?(
       <div>
         <Result
-          img={<img src={require(`../img/${props.avatar}.png`)} style={{width:50,height:50}} />}
+          img={<img src={require(`../img/${props.avatar}.png`)} style={{width:50,height:50}} alt='logo'/>}
           title={props.user}
-          message={props.type=='boss'?props.company:null}
+          message={props.type==='boss'?props.company:null}
         />
         <List renderHeader={()=>'简介'}>
             <Item multipleLine>

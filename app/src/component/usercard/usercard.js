@@ -35,9 +35,9 @@ import {withRouter} from 'react-router-dom';
                       extra={<span>{v.title}</span>}
                     />
                     <Body>
-                      {v.type == 'boss' ? <div>公司:{v.company}</div> : null}
+                      {v.type === 'boss' ? <div>公司:{v.company}</div> : null}
                       {v.desc}
-                      {v.type == 'boss' ? <div>薪资:{v.money}</div> : null}
+                      {v.type === 'boss' ? <div>薪资:{v.money}</div> : null}
                     </Body>
                   </Card>
                 : null

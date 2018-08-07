@@ -1,10 +1,10 @@
 import React from 'react';
-import {List, InputItem} from 'antd-mobile';
-import io from 'socket.io-client';
+import {List, InputItem, NavBar} from 'antd-mobile';
+// import io from 'socket.io-client';
 import {connect} from 'react-redux';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
 //   建立连接
-const socket = io ('ws://localhost:9093');
+// const socket = io ('ws://localhost:9093');
 @connect (state => state, {getMsgList,sendMsg,recvMsg})
 class Chat extends React.Component {
   constructor (props) {
@@ -25,10 +25,24 @@ class Chat extends React.Component {
     this.setState ({text: ''});
   }
   render () {
+    console.log(this.props);
+    const user = this.props.match.params.user
+    const Item = List.Item
     return (
-      <div>
-        {this.state.msg.map (v => {
-          return <p key={v}>{v}</p>;
+      <div id='chat-page'>
+        <NavBar mode='dark'>
+          {this.props.match.params.user}
+        </NavBar>
+        {this.props.chat.chatmsg.map (v => {
+          return v.from===user?(
+            <List key={v._id}>
+              <Item>{v.content}</Item>
+            </List>
+          ):(
+            <List className='chat-me' key={v._id}>
+              <Item extra={'avatar'}>{v.content}</Item>
+            </List>
+          )
         })}
         <div className="stick-footer">
           <List />
