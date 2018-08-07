@@ -39,15 +39,15 @@ function msgList (msgs) {
 function msgRecv (msg) {
   return {type: MSG_RECV, payload: msg};
 }
-export function recvMsg () {
-  return dispatch => {
-    socket.on ('recvmsg', function (data) {
-      console.log ('recvmig');
-      dispatch (msgRecv (data));
-    });
-  };
+export function recvMsg(){
+	return (dispatch)=>{
+		socket.on('recvmsg',function(data){
+			console.log('recvmsg',data)
+			dispatch(msgRecv(data))
+		})
+	}
 }
-export function sendMsg (from, to, msg) {
+export function sendMsg ({from, to, msg}) {
   return dispatch => {
     socket.emit ('sendmsg', {from, to, msg});
   };
