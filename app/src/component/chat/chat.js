@@ -12,8 +12,8 @@ class Chat extends React.Component {
     this.state = {text: '', msg: []};
   }
   componentDidMount () {
-    this.props.getMsgList()
-    this.props.recvMsg()
+    // this.props.getMsgList()
+    // this.props.recvMsg()
   }
   handleSubmit () {
     // console.log (this.state);
