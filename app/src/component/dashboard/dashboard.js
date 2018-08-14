@@ -6,13 +6,14 @@ import NavLinkBar from '../navlink/navlink';
 import Boss from '../../component/boss/boss';
 import Genius from '../../component/genius/genius';
 import User from '../../component/user/user';
+import Msg from '../msg/msg';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
 // import Msg from '../msg/msg'
 // import {getMsgList,recvMsg} from '../../redux/chat.redux'
 
-function Msg () {
-  return <div>msg</div>;
-}
+// function Msg () {
+//   return <div>msg</div>;
+// }
 // function User(){
 //   return <div>user</div>
 // }
