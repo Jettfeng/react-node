@@ -18,7 +18,11 @@ class Msg extends React.Component {
       msgGroup[v.chatid].push (v);
     });
     console.log (msgGroup);
-    const chatList = Object.values (msgGroup);
+    const chatList = Object.values (msgGroup).sort((a,b)=>{
+      const a_last = this.getLast(a).create_time
+      const b_last = this.getLast(b).create_time
+      return b_last - a_last
+    });
     console.log (chatList);
     //按照聊天用户分组，根据chatid
     return (
@@ -35,8 +39,12 @@ class Msg extends React.Component {
           return (
             <List key={lastItem._id}>
               <Item
-                extra={<Badge text={unreadNum}></Badge>}
+                extra={<Badge text={unreadNum} />}
                 thumb={require (`../img/${userInfo[targetId].avatar}.png`)}
+                arrow='horizontal'
+                onClick={()=>{
+                  this.props.history.push(`/chat/${targetId}`)
+                }}
               >
                 {lastItem.content}
                 <Brief>{userInfo[targetId].name}</Brief>
