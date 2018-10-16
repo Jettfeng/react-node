@@ -1,5 +1,5 @@
 const express = require('express')
-const utils = require('utility')
+const utils = require('utility')//md5加密
 const Router = express.Router()
 const modle = require('./model')
 const User = modle.getModel('user')
@@ -29,7 +29,7 @@ Router.get('/info',function(req,res){
   return res.json({code:1})
 })
 
-
+// md5加密方法
 function md5Pwd(pwd){
 	const salt = 'imooc_is_good_3957x8yza6!@#IUHJh~~'
 	return utils.md5(utils.md5(pwd+salt))
