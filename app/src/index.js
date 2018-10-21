@@ -37,7 +37,7 @@ ReactDOM.render (
           <Route path="/geniusinfo" component={GeniusInfo} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          {/* 如果没有path ，只要上面的路由没有命中，就会显示 */}
+          {/* 如果没有path ，只要上面的路由没有命中，就会显示 ；如果没有switch，上面所有有path的路由都会显示Dashboard组件*/}
           <Route component={Dashboard} />
         </Switch>
       </div>
