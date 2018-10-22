@@ -4,7 +4,6 @@ import {Card,WhiteSpace,WingBlank} from 'antd-mobile'
 class UserCard extends React.Component {
     componentDidMount(){
         console.log(this.props.userlist);
-        
     }
   static propTypes = {
     userlist: PropTypes.array.isRequired,
