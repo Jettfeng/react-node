@@ -19,6 +19,7 @@ function WrapHello(fn){
 hello = WrapHello(hello)
 hello()
 
+
 @connect(
   state=>state.user,
   {login}
