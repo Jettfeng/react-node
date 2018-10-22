@@ -1,41 +1,49 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Result,List,WhiteSpace} from 'antd-mobile';
+import React from "react";
+import { connect } from "react-redux";
+import { Result, List, WhiteSpace } from "antd-mobile";
 
-@connect(
-	state=>state.user,
-)
+@connect(state => state.user)
 class User extends React.Component {
-    constructor(props){
-        super(props)
-    }
-    componentDidMount(){
-        console.log(this.props);
-    }
-  render () {
-      const props = this.props
-      const Item= List.Item
-      const Brief = Item.Brief;
-    return props.user?(
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    console.log(this.props);
+  }
+  render() {
+    const props = this.props;
+    const Item = List.Item;
+    const Brief = Item.Brief;
+    return props.user ? (
       <div>
         <Result
-          img={<img src={require(`../img/${props.avatar}.png`)} style={{width:50,height:50}} />}
+          img={
+            <img
+              src={require(`../img/${props.avatar}.png`)}
+              style={{ width: 50, height: 50 }}
+            />
+          }
           title={props.user}
-          message={props.type=='boss'?props.company:null}
+          message={props.type == "boss" ? props.company : null}
         />
-        <List renderHeader={()=>'简介'}>
-            <Item multipleLine>
-                {props.title}
-                <Brief>{props.desc}</Brief>
-                {props.money? <Brief>薪资:{props.money}</Brief>:null}
-            </Item>
+        <List renderHeader={() => "简介"}>
+          <Item multipleLine>
+            {props.title}
+            <Brief>{props.desc}</Brief>
+            {props.money ? (
+              <Brief>
+                薪资:
+                {props.money}
+              </Brief>
+            ) : null}
+          </Item>
         </List>
         <WhiteSpace />
         <List>
-        <Item>退出登录</Item>
+          <Item>退出登录</Item>
         </List>
       </div>
-    ):null;
+    ) : null;
   }
 }
 
