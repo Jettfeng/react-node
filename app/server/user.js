@@ -14,7 +14,7 @@ Router.get('/list',function(req, res){
 })
 Router.get('/getmsglist',function(req,res){
   const user = req.cookies.user
-  // {'$or':[{from:user,to:user}]}
+  // {'$or':[{from:user,to:user}]} 查询多个条件
   Chat.find({},function(err,doc){
       if(!err){
         return res.json({code:0,msgs:doc})
