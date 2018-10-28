@@ -14,7 +14,7 @@ Router.get ('/list', function (req, res) {
 });
 Router.get ('/getmsglist', function (req, res) {
   const user = req.cookies.userid;
-  // {'$or':[{from:user,to:user}]}
+  // {'$or':[{from:user,to:user}]}查询多个条件
   User.find ({}, function (e, userdoc) {
     let users = {};
     userdoc.forEach (v => {
