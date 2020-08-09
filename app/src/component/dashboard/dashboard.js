@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
     ];
     return (
       <div>
-        <NavBar className=".fixd-header" mode="dard">
+        <NavBar className="fixd-header" mode="dard">
           {navList.find(v => v.path === pathname).title}
         </NavBar>
         <div>
